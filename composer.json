@@ -1,0 +1,50 @@
+{
+    "name": "alexivanou/russian-text-bundle",
+    "description": "Symfony bundle providing Russian text functions: pluralization, number spelling, name inflection, noun/adjective declension, money spelling, time intervals, and more. Wraps wapmorgan/morphos into Symfony DI services and Twig extensions.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aliaksandr Ivanou",
+            "email": "alexivanou@gmail.com"
+        }
+    ],
+    "keywords": [
+        "russian",
+        "text",
+        "plural",
+        "num2str",
+        "morphology",
+        "symfony",
+        "twig",
+        "declension",
+        "inflection"
+    ],
+    "require": {
+        "php": ">=7.2",
+        "wapmorgan/morphos": "^2.0",
+        "symfony/framework-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/twig-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0",
+        "twig/twig": "^2.0 || ^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 || ^9.5"
+    },
+    "suggest": {
+        "symfony/flex": "Allows auto-configuration of the bundle"
+    },
+    "autoload": {
+        "psr-4": {
+            "AlexIvanou\\RussianTextBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "2.0-dev"
+        },
+        "symfony": {
+            "require": "4.2.* || 5.0.* || 6.0.* || 7.0.*",
+            "name": "russian_text"
+        }
+    }
+}

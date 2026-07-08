@@ -1,0 +1,186 @@
+services:
+    _defaults:
+        public: false
+
+    # --- Aliases for autowiring ---
+    AlexIvanou\RussianTextBundle\Service\PluralizerInterface: '@alexivanou.russian_text.pluralizer'
+    AlexIvanou\RussianTextBundle\Service\NumberSpellerInterface: '@alexivanou.russian_text.number_speller'
+    AlexIvanou\RussianTextBundle\Service\MoneySpellerInterface: '@alexivanou.russian_text.money_speller'
+    AlexIvanou\RussianTextBundle\Service\NameInflectorInterface: '@alexivanou.russian_text.name_inflector'
+    AlexIvanou\RussianTextBundle\Service\NounDeclinerInterface: '@alexivanou.russian_text.noun_decliner'
+    AlexIvanou\RussianTextBundle\Service\TimeSpellerInterface: '@alexivanou.russian_text.time_speller'
+    AlexIvanou\RussianTextBundle\Service\TransliteratorInterface: '@alexivanou.russian_text.transliterator'
+    AlexIvanou\RussianTextBundle\Service\IdentifierValidatorInterface: '@alexivanou.russian_text.identifier_validator'
+    AlexIvanou\RussianTextBundle\Service\PhoneFormatterInterface: '@alexivanou.russian_text.phone_formatter'
+    AlexIvanou\RussianTextBundle\Service\NameParserInterface: '@alexivanou.russian_text.name_parser'
+    AlexIvanou\RussianTextBundle\Service\RussianDateFormatterInterface: '@alexivanou.russian_text.russian_date_formatter'
+    AlexIvanou\RussianTextBundle\Service\TextHelperInterface: '@alexivanou.russian_text.text_helper'
+
+    # --- Core Services ---
+    alexivanou.russian_text.pluralizer:
+        class: AlexIvanou\RussianTextBundle\Service\Pluralizer
+
+    alexivanou.russian_text.number_speller:
+        class: AlexIvanou\RussianTextBundle\Service\NumberSpeller
+
+    alexivanou.russian_text.money_speller:
+        class: AlexIvanou\RussianTextBundle\Service\MoneySpeller
+
+    alexivanou.russian_text.name_inflector:
+        class: AlexIvanou\RussianTextBundle\Service\NameInflector
+
+    alexivanou.russian_text.noun_decliner:
+        class: AlexIvanou\RussianTextBundle\Service\NounDecliner
+
+    alexivanou.russian_text.time_speller:
+        class: AlexIvanou\RussianTextBundle\Service\TimeSpeller
+
+    alexivanou.russian_text.transliterator:
+        class: AlexIvanou\RussianTextBundle\Service\Transliterator
+
+    alexivanou.russian_text.identifier_validator:
+        class: AlexIvanou\RussianTextBundle\Service\IdentifierValidator
+        calls:
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\InnValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\KppValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\OgrnValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\SnilsValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\OkpoValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\BikValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\UnpValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PersonalNumberValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PassportRfValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PassportRbValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\CreditCardValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\SwiftValidator']]
+            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\IbanValidator']]
+
+    alexivanou.russian_text.phone_formatter:
+        class: AlexIvanou\RussianTextBundle\Service\PhoneFormatter
+
+    alexivanou.russian_text.name_parser:
+        class: AlexIvanou\RussianTextBundle\Service\NameParser
+
+    alexivanou.russian_text.russian_date_formatter:
+        class: AlexIvanou\RussianTextBundle\Service\RussianDateFormatter
+
+    alexivanou.russian_text.text_helper:
+        class: AlexIvanou\RussianTextBundle\Service\TextHelper
+
+    # --- Validators (tagged for extensibility) ---
+    alexivanou.russian_text.validator.inn:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\InnValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.kpp:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\KppValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.ogrn:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\OgrnValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.snils:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\SnilsValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.okpo:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\OkpoValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.bik:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\BikValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.unp:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\UnpValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.personal_number:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\PersonalNumberValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.passport_rf:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\PassportRfValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.passport_rb:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\PassportRbValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.credit_card:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\CreditCardValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.swift:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\SwiftValidator
+        tags:
+            - { name: russian_text.validator }
+
+    alexivanou.russian_text.validator.iban:
+        class: AlexIvanou\RussianTextBundle\Service\Validator\IbanValidator
+        tags:
+            - { name: russian_text.validator }
+
+    # --- Twig Extensions (registered via DI tags) ---
+    alexivanou.russian_text.twig.plural:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\PluralExtension
+        arguments:
+            - '@alexivanou.russian_text.pluralizer'
+        tags:
+            - { name: twig.extension }
+
+    alexivanou.russian_text.twig.numeral:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\NumeralExtension
+        arguments:
+            - '@alexivanou.russian_text.number_speller'
+            - '@alexivanou.russian_text.money_speller'
+        tags:
+            - { name: twig.extension }
+
+    alexivanou.russian_text.twig.name:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\NameExtension
+        arguments:
+            - '@alexivanou.russian_text.name_inflector'
+        tags:
+            - { name: twig.extension }
+
+    alexivanou.russian_text.twig.time:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\TimeExtension
+        arguments:
+            - '@alexivanou.russian_text.time_speller'
+        tags:
+            - { name: twig.extension }
+
+    alexivanou.russian_text.twig.utility:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\UtilityExtension
+        arguments:
+            - '@alexivanou.russian_text.transliterator'
+            - '@alexivanou.russian_text.text_helper'
+            - '@alexivanou.russian_text.russian_date_formatter'
+        tags:
+            - { name: twig.extension }
+
+    alexivanou.russian_text.twig.validation:
+        class: AlexIvanou\RussianTextBundle\Twig\Extension\ValidationExtension
+        arguments:
+            - '@alexivanou.russian_text.identifier_validator'
+            - '@alexivanou.russian_text.phone_formatter'
+            - '@alexivanou.russian_text.name_parser'
+        tags:
+            - { name: twig.extension }
+
+    # AdjectiveDecliner and GeographicalNameInflector are registered
+    # conditionally in the DI extension (AlexIvanouRussianTextExtension).
+    # Their Twig filters are added to DeclensionExtension dynamically.

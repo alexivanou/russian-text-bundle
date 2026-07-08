@@ -1,0 +1,72 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} - Symfony ${{ matrix.symfony }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - 7.3
+          - 7.4
+          - 8.0
+          - 8.1
+          - 8.2
+          - 8.3
+        symfony:
+          - 4.4
+          - 5.4
+          - 6.4
+          - 7.3
+        exclude:
+          - php: 7.3
+            symfony: 6.4
+          - php: 7.3
+            symfony: 7.3
+          - php: 7.4
+            symfony: 6.4
+          - php: 7.4
+            symfony: 7.3
+          - php: 8.0
+            symfony: 6.4
+          - php: 8.0
+            symfony: 7.3
+          - php: 8.1
+            symfony: 7.3
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring
+          tools: composer:v2
+
+      - name: Configure Symfony version
+        run: |
+          composer require \
+            symfony/framework-bundle:^${{ matrix.symfony }} \
+            symfony/twig-bundle:^${{ matrix.symfony }} \
+            --no-update --no-interaction
+
+      - name: Constrain Twig for PHP 7.x
+        if: ${{ startsWith(matrix.php, '7.') }}
+        run: composer require twig/twig:^2.0 --no-update --no-interaction
+
+      - name: Install dependencies
+        run: |
+          composer config policy.advisories.block false
+          composer update --prefer-dist --no-progress --no-interaction
+          git checkout composer.json
+
+      - name: Run tests
+        run: vendor/bin/phpunit
