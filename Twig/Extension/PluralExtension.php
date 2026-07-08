@@ -15,7 +15,7 @@ class PluralExtension extends AbstractExtension
         $this->pluralizer = $pluralizer;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('pluralize', array($this, 'pluralizeFilter')),

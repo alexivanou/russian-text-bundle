@@ -25,7 +25,7 @@ class UtilityExtension extends AbstractExtension
         $this->dateFormatter = $dateFormatter;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = array();
 
@@ -48,7 +48,7 @@ class UtilityExtension extends AbstractExtension
         return $filters;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         $functions = array();
 

@@ -16,14 +16,14 @@ class NameExtension extends AbstractExtension
         $this->nameInflector = $nameInflector;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('inflect_name', array($this, 'inflectNameFilter')),
         );
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
             new TwigFunction('name_cases', array($this, 'nameCasesFunction')),

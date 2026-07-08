@@ -18,7 +18,7 @@ class NumeralExtension extends AbstractExtension
         $this->moneySpeller = $moneySpeller;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('cardinal', array($this, 'cardinalFilter')),

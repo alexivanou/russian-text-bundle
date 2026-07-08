@@ -24,7 +24,7 @@ class DeclensionExtension extends AbstractExtension
         $this->geoInflector = $geoInflector;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = array();
 

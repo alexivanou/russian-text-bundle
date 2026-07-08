@@ -25,7 +25,7 @@ class ValidationExtension extends AbstractExtension
         $this->nameParser = $nameParser;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = array();
 
@@ -36,7 +36,7 @@ class ValidationExtension extends AbstractExtension
         return $filters;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         $functions = array();
 

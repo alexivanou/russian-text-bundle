@@ -15,7 +15,7 @@ class TimeExtension extends AbstractExtension
         $this->timeSpeller = $timeSpeller;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('time_ago', array($this, 'timeAgoFilter')),

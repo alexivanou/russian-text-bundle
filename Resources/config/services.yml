@@ -40,20 +40,6 @@ services:
 
     alexivanou.russian_text.identifier_validator:
         class: AlexIvanou\RussianTextBundle\Service\IdentifierValidator
-        calls:
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\InnValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\KppValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\OgrnValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\SnilsValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\OkpoValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\BikValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\UnpValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PersonalNumberValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PassportRfValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\PassportRbValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\CreditCardValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\SwiftValidator']]
-            - [addValidator, ['@AlexIvanou\RussianTextBundle\Service\Validator\IbanValidator']]
 
     alexivanou.russian_text.phone_formatter:
         class: AlexIvanou\RussianTextBundle\Service\PhoneFormatter
