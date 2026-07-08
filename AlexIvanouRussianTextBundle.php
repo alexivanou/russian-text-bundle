@@ -4,6 +4,7 @@ namespace AlexIvanou\RussianTextBundle;
 
 use AlexIvanou\RussianTextBundle\DependencyInjection\Compiler\ValidatorCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AlexIvanouRussianTextBundle extends Bundle
@@ -15,7 +16,7 @@ class AlexIvanouRussianTextBundle extends Bundle
         $container->addCompilerPass(new ValidatorCompilerPass());
     }
 
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         if (null === $this->extension) {
             $this->extension = new DependencyInjection\AlexIvanouRussianTextExtension();

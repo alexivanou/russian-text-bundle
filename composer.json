@@ -23,8 +23,8 @@
     "require": {
         "php": ">=7.2",
         "wapmorgan/morphos": "^2.0",
-        "symfony/framework-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0",
-        "symfony/twig-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/framework-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+        "symfony/twig-bundle": "^4.2 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
         "twig/twig": "^2.0 || ^3.0"
     },
     "require-dev": {
@@ -43,7 +43,7 @@
             "dev-main": "2.0-dev"
         },
         "symfony": {
-            "require": "4.2.* || 5.0.* || 6.0.* || 7.0.*",
+            "require": "4.2.* || 5.0.* || 6.0.* || 7.0.* || 8.0.*",
             "name": "russian_text"
         }
     }
